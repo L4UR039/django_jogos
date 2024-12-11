@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Editar Jogo</h1>
+<form method="post">
+  {% csrf_token %}
+  Nome: <input type="text" name="nome" value="{{ jogo.nome }}"><br>
+  Gênero: <input type="text" name="genero" value="{{ jogo.genero }}"><br>
+  Ano de Lançamento: <input type="number" name="ano_lancamento" value="{{ jogo.ano_lancamento }}"><br>
+  Desenvolvedor:
+  <select name="desenvolvedor">
+    {% for desenvolvedor in desenvolvedores %}
+    <option value="{{ desenvolvedor.id }}" {% if desenvolvedor == jogo.desenvolvedor %}selected{% endif %}>{{ desenvolvedor.nome }}</option>
+    {% endfor %}
+  </select><br>
+  <button type="submit">Salvar</button>
+</form>
+<a href="{% url 'listar_jogos' %}">Voltar</a>
+
+</body>
+</html>

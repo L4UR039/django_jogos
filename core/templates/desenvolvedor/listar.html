@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de Desenvolvedores</h1>
+<a href="{% url 'pagina_inicial' %}">Voltar à Página Inicial</a> | 
+<a href="{% url 'listar_jogos' %}">Ver Jogos</a>
+<a href="{% url 'criar_desenvolvedor' %}">Criar Novo Desenvolvedor</a>
+<ul>
+  {% for desenvolvedor in desenvolvedores %}
+  <li>
+    {{ desenvolvedor.nome }} - 
+    <a href="{% url 'editar_desenvolvedor' desenvolvedor.id %}">Editar</a> - 
+    <a href="{% url 'deletar_desenvolvedor' desenvolvedor.id %}">Deletar</a>
+  </li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>

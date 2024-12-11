@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de Jogos</h1>
+<a href="{% url 'pagina_inicial' %}">Voltar à Página Inicial</a> | 
+<a href="{% url 'listar_desenvolvedores' %}">Ver Desenvolvedores</a>
+<a href="{% url 'criar_jogo' %}">Criar Novo Jogo</a>
+<ul>
+  {% for jogo in jogos %}
+  <li>
+    {{ jogo.nome }} - {{ jogo.genero }} - {{ jogo.ano_lancamento }} - {{ jogo.desenvolvedor.nome }} - 
+    <a href="{% url 'editar_jogo' jogo.id %}">Editar</a> - 
+    <a href="{% url 'deletar_jogo' jogo.id %}">Deletar</a>
+  </li>
+  {% endfor %}
+</ul>
+</body>
+</html>
